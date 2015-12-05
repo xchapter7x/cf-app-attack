@@ -1,4 +1,4 @@
-# cf-app-attach
+# cf-app-attack
 
 This is a cf cli plugin for perf and load testing your application
 
