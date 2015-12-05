@@ -6,6 +6,21 @@
 	],
 	"Deps": [
 		{
+			"ImportPath": "github.com/cloudfoundry/cli/plugin",
+			"Comment": "v6.13.0-2-g67901d5",
+			"Rev": "67901d5e743d7ce5fc69d3fc4c5b44271deb2bc3"
+		},
+		{
+			"ImportPath": "github.com/onsi/ginkgo",
+			"Comment": "v1.2.0-22-g39d2c24",
+			"Rev": "39d2c24f8a92c88f7e7f4d8ec6c80d3cc8f5ac65"
+		},
+		{
+			"ImportPath": "github.com/onsi/gomega",
+			"Comment": "v1.0-71-g2152b45",
+			"Rev": "2152b45fa28a361beba9aab0885972323a444e28"
+		},
+		{
 			"ImportPath": "github.com/streadway/quantile",
 			"Rev": "b0c588724d25ae13f5afb3d90efec0edc636432b"
 		},

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
+	"github.com/cloudfoundry/cli/plugin"
 
-	"github.com/xchapter7x/cf-app-attack/vegetaclihelper"
+	"github.com/xchapter7x/cf-app-attack/attackplugin"
 )
 
 func main() {
-	vegetaclihelper.VegetaCliExecute(os.Args[1:])
+	plugin.Start(new(attackplugin.AppAttack))
 }
