@@ -12,7 +12,7 @@ var _ = Describe("AppAttack", func() {
 	Describe("given GetMetadata method", func() {
 		Context("when called", func() {
 			It("then it should return valid metadata", func() {
-				appAttack := new(AppAttack)
+				appAttack := &AppAttack{Version: "v1.1.1"}
 				meta := appAttack.GetMetadata()
 				Ω(meta.Name).Should(Equal(PluginName))
 			})
@@ -20,7 +20,7 @@ var _ = Describe("AppAttack", func() {
 	})
 	Describe("given Run method", func() {
 		var (
-			appAttack = new(AppAttack)
+			appAttack = &AppAttack{Version: "v1.1.1"}
 			argSpy    []string
 		)
 		VegetaRunner = func(a []string) {

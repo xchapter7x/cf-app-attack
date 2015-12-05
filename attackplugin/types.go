@@ -1,5 +1,7 @@
 package attackplugin
 
 type (
-	AppAttack struct{}
+	AppAttack struct {
+		Version string
+	}
 )

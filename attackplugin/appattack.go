@@ -2,6 +2,8 @@ package attackplugin
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
 
 	"github.com/cloudfoundry/cli/plugin"
 	"github.com/xchapter7x/cf-app-attack/vegetaclihelper"
@@ -20,14 +22,22 @@ func (c *AppAttack) Run(cliConnection plugin.CliConnection, args []string) {
 	}
 }
 
+func (c *AppAttack) GetVersionType() plugin.VersionType {
+	versionArray := strings.Split(strings.TrimPrefix(c.Version, "v"), ".")
+	major, _ := strconv.Atoi(versionArray[0])
+	minor, _ := strconv.Atoi(versionArray[1])
+	build, _ := strconv.Atoi(versionArray[2])
+	return plugin.VersionType{
+		Major: major,
+		Minor: minor,
+		Build: build,
+	}
+}
+
 func (c *AppAttack) GetMetadata() plugin.PluginMetadata {
 	return plugin.PluginMetadata{
-		Name: PluginName,
-		Version: plugin.VersionType{
-			Major: 1,
-			Minor: 0,
-			Build: 0,
-		},
+		Name:    PluginName,
+		Version: c.GetVersionType(),
 		Commands: []plugin.Command{
 			plugin.Command{
 				Name:     CmdBench,

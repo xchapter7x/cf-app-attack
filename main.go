@@ -6,6 +6,11 @@ import (
 	"github.com/xchapter7x/cf-app-attack/attackplugin"
 )
 
+var (
+	Version string
+)
+
 func main() {
-	plugin.Start(new(attackplugin.AppAttack))
+	appAttack := &attackplugin.AppAttack{Version: Version}
+	plugin.Start(appAttack)
 }
