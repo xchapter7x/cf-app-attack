@@ -15,7 +15,8 @@ func (c *AppAttack) Run(cliConnection plugin.CliConnection, args []string) {
 	switch args[0] {
 	case CmdBench:
 		vegetaArgs := args[2:]
-		VegetaRunner(vegetaArgs)
+		appHost := "localhost"
+		VegetaRunner(vegetaArgs, appHost)
 
 	default:
 		fmt.Println("Invalid command:", args[0])

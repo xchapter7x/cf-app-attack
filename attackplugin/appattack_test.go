@@ -23,7 +23,7 @@ var _ = Describe("AppAttack", func() {
 			appAttack = &AppAttack{Version: "v1.1.1"}
 			argSpy    []string
 		)
-		VegetaRunner = func(a []string) {
+		VegetaRunner = func(a []string, h string) {
 			argSpy = a
 		}
 		Context("when called with a invalid command", func() {

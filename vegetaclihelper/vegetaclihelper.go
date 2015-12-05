@@ -10,7 +10,10 @@ import (
 	"strings"
 )
 
-func VegetaCliExecute(vegetaArgs []string) {
+var AppHost string
+
+func VegetaCliExecute(vegetaArgs []string, host string) {
+	AppHost = host
 	commands := map[string]command{
 		"attack": attackCmd(),
 		"report": reportCmd(),
