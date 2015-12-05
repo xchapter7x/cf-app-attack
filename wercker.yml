@@ -94,18 +94,18 @@ deploy:
         hostname: github.com
         fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
 
-    - script:
-        name: set release id variable for version 
-        code: |
-          go get github.com/xchapter7x/versioning
-          export WERCKER_GITHUB_CREATE_RELEASE_ID=`versioning bump_patch`
-
     - xchapter7x/flowy-release:
         action: "tag-only-release"
         tag_variable_name: "VERSION_TAG"
         active: $GITFLOW_ACTIVE
         git_name: $GITFLOW_NAME
         git_email: $GITFLOW_EMAIL
+
+    - script:
+        name: set release id variable for version 
+        code: |
+          go get github.com/xchapter7x/versioning
+          export WERCKER_GITHUB_CREATE_RELEASE_ID=`versioning current`
 
     - github-create-release:
         token: $GITHUB_TOKEN
