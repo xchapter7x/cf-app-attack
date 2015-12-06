@@ -8,6 +8,12 @@ It thinly wraps Vegeta to do this [here](http://github.com/tsenart/vegeta).
 
 [![Coverage Status](https://coveralls.io/repos/xchapter7x/cf-app-attack/badge.svg?branch=master&service=github)](https://coveralls.io/github/xchapter7x/cf-app-attack?branch=master)
 
+## installation
+
+- download latest binaries from https://github.com/xchapter7x/cf-app-attack/releases/latest
+- untar file
+- cf install-plugin osx/cf-app-attack
+
 
 ## Usage manual
 ```console
