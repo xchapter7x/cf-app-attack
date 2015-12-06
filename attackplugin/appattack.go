@@ -7,6 +7,7 @@ import (
 
 	"github.com/cloudfoundry/cli/plugin"
 	"github.com/xchapter7x/cf-app-attack/vegetaclihelper"
+	"github.com/xchapter7x/lo"
 )
 
 var VegetaRunner = vegetaclihelper.VegetaCliExecute
@@ -14,9 +15,16 @@ var VegetaRunner = vegetaclihelper.VegetaCliExecute
 func (c *AppAttack) Run(cliConnection plugin.CliConnection, args []string) {
 	switch args[0] {
 	case CmdBench:
+		appname := args[1]
 		vegetaArgs := args[2:]
-		appHost := "localhost"
-		VegetaRunner(vegetaArgs, appHost)
+
+		if appModel, err := cliConnection.GetApp(appname); err == nil {
+			appHost := fmt.Sprintf("%s.%s", appModel.Routes[0].Host, appModel.Routes[0].Domain.Name)
+			VegetaRunner(vegetaArgs, appHost)
+		} else {
+			lo.G.Error("error on app query: ", err.Error())
+			panic(err)
+		}
 
 	default:
 		fmt.Println("Invalid command:", args[0])
