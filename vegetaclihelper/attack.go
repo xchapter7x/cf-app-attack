@@ -16,7 +16,7 @@ import (
 	vegeta "github.com/tsenart/vegeta/lib"
 )
 
-func attackCmd() command {
+func attackCmd(apphost string) command {
 	fs := flag.NewFlagSet("vegeta attack", flag.ExitOnError)
 	opts := &attackOpts{
 		headers: headers{http.Header{}},
@@ -43,7 +43,7 @@ func attackCmd() command {
 
 	return command{fs, func(args []string) error {
 		fs.Parse(args)
-		return attack(opts)
+		return attack(opts, apphost)
 	}}
 }
 
@@ -75,7 +75,7 @@ type attackOpts struct {
 
 // attack validates the attack arguments, sets up the
 // required resources, launches the attack and writes the results
-func attack(opts *attackOpts) (err error) {
+func attack(opts *attackOpts, apphost string) (err error) {
 	if opts.rate == 0 {
 		return errZeroRate
 	}
@@ -102,7 +102,7 @@ func attack(opts *attackOpts) (err error) {
 
 	var (
 		tr  vegeta.Targeter
-		src = files[opts.targetsf]
+		src = ReplaceAppHost(files[opts.targetsf], apphost)
 		hdr = opts.headers.Header
 	)
 	if opts.lazy {

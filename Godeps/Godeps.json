@@ -21,6 +21,10 @@
 			"Rev": "2152b45fa28a361beba9aab0885972323a444e28"
 		},
 		{
+			"ImportPath": "github.com/op/go-logging",
+			"Rev": "e8d5414f0947014548c2334044a0fac13187dfee"
+		},
+		{
 			"ImportPath": "github.com/streadway/quantile",
 			"Rev": "b0c588724d25ae13f5afb3d90efec0edc636432b"
 		},
@@ -28,6 +32,10 @@
 			"ImportPath": "github.com/tsenart/vegeta/lib",
 			"Comment": "v6.0.0-2-ge0b03b2",
 			"Rev": "e0b03b27aa21b57121097b1d00f0e143c7a7da34"
+		},
+		{
+			"ImportPath": "github.com/xchapter7x/lo",
+			"Rev": "aa2602d0e8e8647f0ce7b53109b37040941915aa"
 		}
 	]
 }

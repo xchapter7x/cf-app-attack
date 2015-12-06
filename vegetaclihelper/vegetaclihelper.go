@@ -13,9 +13,8 @@ import (
 var AppHost string
 
 func VegetaCliExecute(vegetaArgs []string, host string) {
-	AppHost = host
 	commands := map[string]command{
-		"attack": attackCmd(),
+		"attack": attackCmd(host),
 		"report": reportCmd(),
 		"dump":   dumpCmd(),
 	}

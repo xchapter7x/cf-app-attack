@@ -75,6 +75,7 @@ dump command:
 
 examples:
   echo "GET http://localhost/" | cf bench mycool_app attack -duration=5s | tee results.bin | cf bench mycool_app report
+  echo "GET http://{{.AppHost}}/" | cf bench mycool_app attack -duration=5s | tee results.bin | cf bench mycool_app report
   cf bench mycool_app attack -targets=targets.txt > results.bin
   cf bench mycool_app report -inputs=results.bin -reporter=json > metrics.json
   cat results.bin | cf bench mycool_app report -reporter=plot > plot.html
@@ -197,6 +198,7 @@ The format should be as follows, combining any or all of the following:
 Simple targets
 ```
 GET http://goku:9090/path/to/dragon?item=balls
+GET http://{{.AppHost}}:9090/path/to/dragon?item=balls
 GET http://user:password@goku:9090/path/to
 HEAD http://goku:9090/path/to/success
 ```
@@ -204,6 +206,10 @@ HEAD http://goku:9090/path/to/success
 Targets with custom headers
 ```
 GET http://user:password@goku:9090/path/to
+X-Account-ID: 8675309
+
+
+GET http://user:password@{{.AppHost}}:9090/path/to
 X-Account-ID: 8675309
 
 DELETE http://goku:9090/path/to/remove
@@ -216,6 +222,10 @@ Targets with custom bodies
 POST http://goku:9090/things
 @/path/to/newthing.json
 
+
+POST http://{{.AppHost}}:9090/things
+@/path/to/newthing.json
+
 PATCH http://goku:9090/thing/71988591
 @/path/to/thing-71988591.json
 ```
@@ -223,6 +233,11 @@ PATCH http://goku:9090/thing/71988591
 Targets with custom bodies and headers
 ```
 POST http://goku:9090/things
+X-Account-ID: 99
+@/path/to/newthing.json
+
+
+POST http://{{.AppHost}}:9090/things
 X-Account-ID: 99
 @/path/to/newthing.json
 ```
