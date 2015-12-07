@@ -19,6 +19,7 @@ func (c *AppAttack) Run(cliConnection plugin.CliConnection, args []string) {
 		vegetaArgs := args[2:]
 
 		if appModel, err := cliConnection.GetApp(appname); err == nil {
+			fmt.Println("appmodel: ", appModel)
 			lo.G.Debug("appmodel: ", appModel)
 			appHost := fmt.Sprintf("%s.%s", appModel.Routes[0].Host, appModel.Routes[0].Domain.Name)
 			VegetaRunner(vegetaArgs, appHost)
