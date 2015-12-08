@@ -1,4 +1,4 @@
-# cf-app-attack
+# civet-coffee 
 
 This is a cf cli plugin for perf and load testing your application
 
