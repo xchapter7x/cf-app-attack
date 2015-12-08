@@ -1,9 +1,7 @@
 package attackplugin
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 
@@ -38,15 +36,9 @@ func (c *AppAttack) Run(cliConnection plugin.CliConnection, args []string) {
 		vegetaArgs := args[2:]
 
 		if appModel, err := c.getApp(cliConnection, appname); err == nil {
-			fmt.Println("appmodel: ")
-			b, err := json.Marshal(appModel)
-			if err != nil {
-				fmt.Println("error:", err)
-			}
-			os.Stdout.Write(b)
-			lo.G.Debug("appmodel: ", appModel)
 			appHost := fmt.Sprintf("%s.%s", appModel.Routes[0].Host, appModel.Routes[0].Domain.Name)
 			VegetaRunner(vegetaArgs, appHost)
+
 		} else {
 			lo.G.Error("error on app query: ", err.Error())
 			panic(err)
