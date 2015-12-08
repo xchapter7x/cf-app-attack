@@ -18,7 +18,7 @@ i know this looks bad, but i vendored in vegeta cli which has near 0% coverage. 
 
 ## Usage manual
 ```console
-Usage: cf bench <appname> [global flags] <command> [command flags]
+Usage: cf civet <appname> [global flags] <command> [command flags]
 
 global flags:
   -cpus int
@@ -81,12 +81,12 @@ dump command:
       Output file (default "stdout")
 
 examples:
-  echo "GET http://localhost/" | cf bench mycool_app attack -duration=5s | tee results.bin | cf bench mycool_app report
-  echo "GET http://{{.AppHost}}/" | cf bench mycool_app attack -duration=5s | tee results.bin | cf bench mycool_app report
-  cf bench mycool_app attack -targets=targets.txt > results.bin
-  cf bench mycool_app report -inputs=results.bin -reporter=json > metrics.json
-  cat results.bin | cf bench mycool_app report -reporter=plot > plot.html
-  cat results.bin | cf bench mycool_app report -reporter="hist[0,100ms,200ms,300ms]"
+  echo "GET http://localhost/" | cf civet mycool_app attack -duration=5s | tee results.bin | cf civet mycool_app report
+  echo "GET http://{{.AppHost}}/" | cf civet mycool_app attack -duration=5s | tee results.bin | cf civet mycool_app report
+  cf civet mycool_app attack -targets=targets.txt > results.bin
+  cf civet mycool_app report -inputs=results.bin -reporter=json > metrics.json
+  cat results.bin | cf civet mycool_app report -reporter=plot > plot.html
+  cat results.bin | cf civet mycool_app report -reporter="hist[0,100ms,200ms,300ms]"
 ```
 
 #### `-cpus`
@@ -102,7 +102,7 @@ Prints the version and exits.
 
 ### `attack`
 ```console
-$ cf bench mycool_app attack -h
+$ cf civet mycool_app attack -h
 Usage of vegeta attack:
   -body string
       Requests body file
@@ -260,7 +260,7 @@ requested rate.
 
 ### report
 ```console
-$ cf bench mycool_app report -h
+$ cf civet mycool_app report -h
 Usage of vegeta report:
   -inputs string
       Input files (comma separated) (default "stdin")
@@ -361,7 +361,7 @@ Bucket         #     %       Histogram
 
 ### `dump`
 ```console
-$ cf bench mycool_app dump -h
+$ cf civet mycool_app dump -h
 Usage of vegeta dump:
   -dumper string
       Dumper [json, csv] (default "json")
@@ -418,7 +418,7 @@ The `report` command accepts multiple result files in a comma separated list.
 It'll read and sort them by timestamp before generating reports.
 
 ```console
-$ cf bench mycool_app report -inputs="10.0.1.1.bin,10.0.2.1.bin,10.0.3.1.bin"
+$ cf civet mycool_app report -inputs="10.0.1.1.bin,10.0.2.1.bin,10.0.3.1.bin"
 Requests      [total, rate]         3600000, 60000.00
 Latencies     [mean, 95, 99, max]   223.340085ms, 326.913687ms, 416.537743ms, 7.788103259s
 Bytes In      [total, mean]         3714690, 3095.57
