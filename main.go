@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/cloudfoundry/cli/plugin"
 
-	"github.com/xchapter7x/cf-app-attack/attackplugin"
+	"github.com/xchapter7x/civet-coffee/attackplugin"
 )
 
 var (

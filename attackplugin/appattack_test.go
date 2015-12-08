@@ -9,7 +9,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	. "github.com/xchapter7x/cf-app-attack/attackplugin"
+	. "github.com/xchapter7x/civet-coffee/attackplugin"
 )
 
 var _ = Describe("AppAttack", func() {

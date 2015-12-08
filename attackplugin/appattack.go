@@ -7,7 +7,7 @@ import (
 
 	"github.com/cloudfoundry/cli/plugin"
 	"github.com/cloudfoundry/cli/plugin/models"
-	"github.com/xchapter7x/cf-app-attack/vegetaclihelper"
+	"github.com/xchapter7x/civet-coffee/vegetaclihelper"
 	"github.com/xchapter7x/lo"
 )
 
@@ -24,7 +24,6 @@ func (c *AppAttack) getApp(cliConnection plugin.CliConnection, appname string) (
 				break
 			}
 		}
-
 	}
 	return
 }

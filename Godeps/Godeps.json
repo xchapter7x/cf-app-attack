@@ -1,6 +1,6 @@
 {
-	"ImportPath": "github.com/xchapter7x/cf-app-attack",
-	"GoVersion": "go1.4.2",
+	"ImportPath": "github.com/xchapter7x/civet-coffee",
+	"GoVersion": "go1.5.2",
 	"Packages": [
 		"./..."
 	],

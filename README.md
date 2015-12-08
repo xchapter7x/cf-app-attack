@@ -6,14 +6,14 @@ It thinly wraps Vegeta to do this [here](http://github.com/tsenart/vegeta).
 
 [![wercker status](https://app.wercker.com/status/3b04d03883a74a4b45f3e9f872d4d723/s/master "wercker status")](https://app.wercker.com/project/bykey/3b04d03883a74a4b45f3e9f872d4d723)
 
-[![Coverage Status](https://coveralls.io/repos/xchapter7x/cf-app-attack/badge.svg?branch=master&service=github)](https://coveralls.io/github/xchapter7x/cf-app-attack?branch=master)
+[![Coverage Status](https://coveralls.io/repos/xchapter7x/civet-coffee/badge.svg?branch=master&service=github)](https://coveralls.io/github/xchapter7x/civet-coffee?branch=master)
 i know this looks bad, but i vendored in vegeta cli which has near 0% coverage. Throwing these numbers off. Ill work against the vegeta stuff as tech debt.
 
 ## installation
 
-- download latest binaries from https://github.com/xchapter7x/cf-app-attack/releases/latest
+- download latest binaries from https://github.com/xchapter7x/civet-coffee/releases/latest
 - untar file
-- cf install-plugin osx/cf-app-attack
+- cf install-plugin osx/civet-coffee
 
 
 ## Usage manual
