@@ -8,11 +8,28 @@ import (
 	"strings"
 
 	"github.com/cloudfoundry/cli/plugin"
+	"github.com/cloudfoundry/cli/plugin/models"
 	"github.com/xchapter7x/cf-app-attack/vegetaclihelper"
 	"github.com/xchapter7x/lo"
 )
 
 var VegetaRunner = vegetaclihelper.VegetaCliExecute
+
+func (c *AppAttack) getApp(cliConnection plugin.CliConnection, appname string) (appModel plugin_models.GetAppsModel, err error) {
+	var apps []plugin_models.GetAppsModel
+
+	if apps, err = cliConnection.GetApps(); err == nil {
+
+		for _, appModel = range apps {
+
+			if appModel.Name == appname {
+				break
+			}
+		}
+
+	}
+	return
+}
 
 func (c *AppAttack) Run(cliConnection plugin.CliConnection, args []string) {
 	switch args[0] {
@@ -20,7 +37,7 @@ func (c *AppAttack) Run(cliConnection plugin.CliConnection, args []string) {
 		appname := args[1]
 		vegetaArgs := args[2:]
 
-		if appModel, err := cliConnection.GetApp(appname); err == nil {
+		if appModel, err := c.getApp(cliConnection, appname); err == nil {
 			fmt.Println("appmodel: ")
 			b, err := json.Marshal(appModel)
 			if err != nil {

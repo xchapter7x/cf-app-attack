@@ -70,12 +70,14 @@ var _ = Describe("AppAttack", func() {
 
 			BeforeEach(func() {
 				fakeCli = new(fakes.FakeCliConnection)
-				fakeCli.GetAppReturns(plugin_models.GetAppModel{
-					Routes: []plugin_models.GetApp_RouteSummary{
-						plugin_models.GetApp_RouteSummary{
-							Host: controlHost,
-							Domain: plugin_models.GetApp_DomainFields{
-								Name: controlDomain,
+				fakeCli.GetAppsReturns([]plugin_models.GetAppsModel{
+					plugin_models.GetAppsModel{
+						Routes: []plugin_models.GetAppsRouteSummary{
+							plugin_models.GetAppsRouteSummary{
+								Host: controlHost,
+								Domain: plugin_models.GetAppsDomainFields{
+									Name: controlDomain,
+								},
 							},
 						},
 					},
@@ -99,12 +101,14 @@ var _ = Describe("AppAttack", func() {
 
 			BeforeEach(func() {
 				fakeCli = new(fakes.FakeCliConnection)
-				fakeCli.GetAppReturns(plugin_models.GetAppModel{
-					Routes: []plugin_models.GetApp_RouteSummary{
-						plugin_models.GetApp_RouteSummary{
-							Host: "fakehost",
-							Domain: plugin_models.GetApp_DomainFields{
-								Name: "fakedomain.com",
+				fakeCli.GetAppsReturns([]plugin_models.GetAppsModel{
+					plugin_models.GetAppsModel{
+						Routes: []plugin_models.GetAppsRouteSummary{
+							plugin_models.GetAppsRouteSummary{
+								Host: "fakehost",
+								Domain: plugin_models.GetAppsDomainFields{
+									Name: "fakedomain.com",
+								},
 							},
 						},
 					},
