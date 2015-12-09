@@ -9,12 +9,12 @@ It thinly wraps Vegeta to do this [here](http://github.com/tsenart/vegeta).
 [![Coverage Status](https://coveralls.io/repos/xchapter7x/cf-app-attack/badge.svg?branch=master&service=github)](https://coveralls.io/github/xchapter7x/cf-app-attack?branch=master)
 i know this looks bad, but i vendored in vegeta cli which has near 0% coverage. Throwing these numbers off. Ill work against the vegeta stuff as tech debt.
 
-## difference civet vs. vegeta-cli
+## difference cf-app-attack vs. vegeta-cli
 
-When using civet, it is called in the context of a cf cli plugin, which gives us access to certian aspects of your targeted environment. You also pass in an application name. Civet will use said application name to auto replace any occurance of `{{.AppHost}}` in your request (stdin, file, etc) with the actual route to the given app. This means we can use the same files or call strings at any tier of deployment, against any application and be confident the URL used has the correct route plugged in.
+When using cf-app-attack, it is called in the context of a cf cli plugin, which gives us access to certian aspects of your targeted environment. You also pass in an application name. cf-app-attack will use said application name to auto replace any occurance of `{{.AppHost}}` in your request (stdin, file, etc) with the actual route to the given app. This means we can use the same files or call strings at any tier of deployment, against any application and be confident the URL used has the correct route plugged in.
 
 ex.
-`echo "GET https://{{.AppHost}}/v1/end/point" | cf civet somecoolapp attack -duration=5s -insecure | cf civet dispenser report -reporter="text"`
+`echo "GET https://{{.AppHost}}/v1/end/point" | cf bench somecoolapp attack -duration=5s -insecure | cf bench somecoolapp report -reporter="text"`
 
 ## installation
 
