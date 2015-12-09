@@ -4,7 +4,7 @@ This is a cf cli plugin for perf and load testing your application
 
 It thinly wraps Vegeta to do this [here](http://github.com/tsenart/vegeta).
 
-[![wercker status](https://app.wercker.com/status/4523a3320daff16b4163a9549e527bfa/s/master "wercker status")](https://app.wercker.com/project/bykey/4523a3320daff16b4163a9549e527bfa)
+[![wercker status](https://app.wercker.com/status/0847003aaca32cdd35c631a86821b394/s/master "wercker status")](https://app.wercker.com/project/bykey/0847003aaca32cdd35c631a86821b394)
 
 [![Coverage Status](https://coveralls.io/repos/xchapter7x/cf-app-attack/badge.svg?branch=master&service=github)](https://coveralls.io/github/xchapter7x/cf-app-attack?branch=master)
 i know this looks bad, but i vendored in vegeta cli which has near 0% coverage. Throwing these numbers off. Ill work against the vegeta stuff as tech debt.
