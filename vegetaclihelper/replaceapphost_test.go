@@ -8,7 +8,7 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	. "github.com/xchapter7x/civet-coffee/vegetaclihelper"
+	. "github.com/xchapter7x/cf-app-attack/vegetaclihelper"
 )
 
 var _ = Describe("ReplaceAppHost", func() {

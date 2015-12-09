@@ -1,6 +1,6 @@
 package attackplugin
 
 const (
-	PluginName = "civet-coffee"
-	CmdBench   = "civet"
+	PluginName = "cf-app-attack"
+	CmdBench   = "bench"
 )
