@@ -90,6 +90,37 @@ var _ = Describe("AppAttack", func() {
 				Ω(hostSpy).Should(Equal(expectedHost))
 			})
 		})
+
+		Context("when called for a valid app with no subdomain", func() {
+			var (
+				fakeCli       *fakes.FakeCliConnection
+				controlHost   = ""
+				controlDomain = "fakedomain.com"
+			)
+
+			BeforeEach(func() {
+				fakeCli = new(fakes.FakeCliConnection)
+				fakeCli.GetAppsReturns([]plugin_models.GetAppsModel{
+					plugin_models.GetAppsModel{
+						Routes: []plugin_models.GetAppsRouteSummary{
+							plugin_models.GetAppsRouteSummary{
+								Host: controlHost,
+								Domain: plugin_models.GetAppsDomainFields{
+									Name: controlDomain,
+								},
+							},
+						},
+					},
+				}, nil)
+			})
+
+			It("then it should use the proper host for the given app", func() {
+				expectedHost := controlDomain
+				appAttack.Run(fakeCli, []string{CmdBench, "goodapp", "blah", "blah"})
+				Ω(hostSpy).Should(Equal(expectedHost))
+			})
+		})
+
 		Context("when called with a invalid command", func() {
 			It("then it should not call any vegeta actions", func() {
 				appAttack.Run(new(fakes.FakeCliConnection), []string{"bad-command", "blah", "blah"})

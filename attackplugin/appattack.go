@@ -35,7 +35,13 @@ func (c *AppAttack) Run(cliConnection plugin.CliConnection, args []string) {
 		vegetaArgs := args[2:]
 
 		if appModel, err := c.getApp(cliConnection, appname); err == nil {
-			appHost := fmt.Sprintf("%s.%s", appModel.Routes[0].Host, appModel.Routes[0].Domain.Name)
+			appHost := appModel.Routes[0].Domain.Name
+
+			// CF Routes must have domains but they do not have to have hostnames
+			if len(appModel.Routes[0].Host) > 0 {
+				appHost = fmt.Sprintf("%s.%s", appModel.Routes[0].Host, appHost)
+			}
+
 			VegetaRunner(vegetaArgs, appHost)
 
 		} else {
